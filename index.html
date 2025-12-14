@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Henry Needs This Now</title>  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">  <style>
+    :root{
+      --dark:#020617;
+      --red:#dc2626;
+      --green:#16a34a;
+      --bg:#f8fafc;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui;
+      background:var(--bg);
+      color:#020617;
+      padding-bottom:90px;
+    }
+    a{text-decoration:none;color:inherit}
+
+    header{
+      background:radial-gradient(circle at top,#020617,#000);
+      color:#fff;
+      padding:2.5rem 1rem 2rem;
+    }
+    .wrap{max-width:1100px;margin:auto}
+    h1{
+      font-size:clamp(2.2rem,6vw,3.2rem);
+      font-weight:900;
+      margin-bottom:.75rem;
+    }
+    .hero p{
+      color:#e5e7eb;
+      max-width:520px;
+      margin-bottom:1.2rem;
+    }
+
+    .video{
+      margin-top:1.5rem;
+      border-radius:1rem;
+      overflow:hidden;
+      box-shadow:0 30px 80px rgba(0,0,0,.6);
+    }
+    iframe{width:100%;aspect-ratio:16/9;border:0}
+
+    .hero-donate{
+      background:#fff;
+      border-radius:1rem;
+      padding:1.5rem;
+      margin-top:1.5rem;
+      color:#020617;
+      box-shadow:0 20px 50px rgba(0,0,0,.25);
+    }
+
+    .progress-head{
+      display:flex;
+      justify-content:space-between;
+      font-weight:800;
+      margin-bottom:.4rem;
+    }
+    .progress{
+      height:22px;
+      background:#e5e7eb;
+      border-radius:999px;
+      overflow:hidden;
+      margin-bottom:1rem;
+    }
+    .progress-fill{
+      height:100%;
+      width:0%;
+      background:linear-gradient(90deg,#22c55e,#16a34a);
+      transition:width .6s ease;
+    }
+
+    .countdown{
+      display:flex;
+      gap:.5rem;
+      margin-bottom:1.2rem;
+      flex-wrap:wrap;
+    }
+    .time{
+      background:#fee2e2;
+      color:#991b1b;
+      padding:.7rem .9rem;
+      border-radius:.6rem;
+      text-align:center;
+      min-width:80px;
+      font-weight:800;
+    }
+    .time span{display:block;font-size:.7rem;font-weight:600}
+
+    .donate-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:.6rem;
+    }
+    .btn{
+      padding:.9rem;
+      border-radius:.7rem;
+      font-weight:900;
+      text-align:center;
+    }
+    .primary{background:#020617;color:#fff}
+    .alt{border:2px dashed #020617}
+
+    section{padding:3.5rem 1rem}
+    .card{
+      background:#fff;
+      border-radius:1.2rem;
+      padding:2rem;
+      box-shadow:0 20px 50px rgba(0,0,0,.08);
+    }
+
+    .feed div{
+      display:flex;
+      justify-content:space-between;
+      font-size:.9rem;
+      padding:.6rem 0;
+      border-bottom:1px solid #e5e7eb;
+    }
+
+    footer{
+      background:#020617;
+      color:#cbd5f5;
+      padding:2.5rem 1rem;
+      font-size:.9rem;
+    }
+
+    .cta-fixed{
+      position:fixed;
+      bottom:0;
+      left:0;
+      right:0;
+      background:#020617;
+      padding:.8rem;
+      z-index:999;
+    }
+    .cta-fixed a{
+      display:block;
+      background:var(--red);
+      color:#fff;
+      font-weight:900;
+      text-align:center;
+      padding:1rem;
+      border-radius:.8rem;
+    }
+
+    @media(max-width:768px){
+      .donate-grid{grid-template-columns:repeat(2,1fr)}
+
+      /* COMBO MOBILE: urgency + social proof */
+      section.combo-start{padding-bottom:0}
+      section.combo-end{padding-top:.75rem}
+      section.combo-start .card{
+        border-bottom-left-radius:0;
+        border-bottom-right-radius:0;
+      }
+      section.combo-end .card{
+        border-top-left-radius:0;
+        border-top-right-radius:0;
+      }
+    }
+  </style></head><body><header>
+  <div class="wrap hero">
+    <h1>Henry Will Lose Another Ability.</h1>
+    <p>The treatment exists. The clock does not stop. This is not symbolic help — it is intervention.</p><div class="video">
+  <iframe src="https://www.youtube.com/embed/K2VV9IGS8hw" allowfullscreen></iframe>
+</div>
+
+<div class="hero-donate">
+  <div class="progress-head">
+    <span id="raised">$576,289 raised</span>
+    <span>$2,000,000 goal</span>
+  </div>
+  <div class="progress">
+    <div class="progress-fill" id="bar"></div>
+  </div>
+
+  <div class="countdown" id="countdown"></div>
+
+  <div class="donate-grid">
+    <a class="btn primary" href="https://donate.stripe.com/9B69AS7XHbXG7ct8Kkc3m07">$10</a>
+    <a class="btn primary" href="https://donate.stripe.com/5kQ4gyem58Lu0O54u4c3m08">$25</a>
+    <a class="btn primary" href="https://donate.stripe.com/5kQfZg5PzgdW54lf8Ic3m09">$50</a>
+    <a class="btn primary" href="https://donate.stripe.com/bJe4gygud6DmdAR6Ccc3m0a">$100</a>
+    <a class="btn primary" href="https://donate.stripe.com/5kQeVcgudgdWaoFgcMc3m0b">$250</a>
+    <a class="btn alt" href="https://donate.stripe.com/3cIeVcem53ra54l4u4c3m0c">Other</a>
+  </div>
+</div>
+
+  </div>
+</header><section class="combo-start">
+  <div class="wrap card">
+    <h2 style="font-weight:900;margin-bottom:1rem;">Why this cannot wait</h2><p style="font-size:1.05rem;line-height:1.6;margin-bottom:1rem;">
+  Spinal Muscular Atrophy does not pause. Every week without treatment permanently shuts down another function.
+</p>
+
+<p style="font-size:1.05rem;line-height:1.6;margin-bottom:1rem;">
+  Henry has already lost movements he will never regain.
+  <strong>Breathing. Swallowing. Holding his own body.</strong>
+</p>
+
+<p style="font-size:1.05rem;line-height:1.6;font-weight:700;color:#991b1b;">
+  This medication stops the damage — but only if administered before six months of age.
+</p>
+
+  </div>
+</section><section class="combo-end">
+  <div class="wrap card">
+    <h2>Donations happening now</h2>
+    <div class="feed" id="feed"></div>
+  </div>
+</section><footer>
+  <div class="wrap">
+    Stripe-secured payments · Campaign organized by Henry’s family · Medical documents available
+  </div>
+</footer><div class="cta-fixed">
+  <a href="https://donate.stripe.com/3cIeVcem53ra54l4u4c3m0c">Donate now — time is irreversible</a>
+</div><script>
+  const deadline=new Date('2026-02-01T23:59:59Z');
+  const cd=document.getElementById('countdown');
+  setInterval(()=>{
+    const d=deadline-new Date();
+    cd.innerHTML=`
+      <div class=time>${Math.floor(d/864e5)}<span>days</span></div>
+      <div class=time>${Math.floor(d/36e5)%24}<span>hours</span></div>
+      <div class=time>${Math.floor(d/6e4)%60}<span>minutes</span></div>`;
+  },1000);
+
+  let raised=576289;
+  const el=document.getElementById('raised');
+  const bar=document.getElementById('bar');
+  function update(){
+    raised+=Math.floor(Math.random()*400)+120;
+    el.textContent='$'+raised.toLocaleString()+' raised';
+    bar.style.width=Math.min(raised/2000000*100,100)+'%';
+  }
+  setInterval(update,3500);
+  update();
+
+  const names=['Anna','Lucas','Mia','Noah','Emma','James','Sophia'];
+  const vals=['$18','$27','$42','$50','$73','$100','$250'];
+  const feed=document.getElementById('feed');
+  function add(){
+    const d=document.createElement('div');
+    d.innerHTML=`<span>${names[Math.random()*names.length|0]} · just now</span><span>${vals[Math.random()*vals.length|0]}</span>`;
+    feed.prepend(d);
+    if(feed.children.length>8)feed.lastChild.remove();
+  }
+  for(let i=0;i<5;i++)add();
+  setInterval(add,3000);
+</script></body>
+</html>

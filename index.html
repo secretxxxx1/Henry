@@ -1,317 +1,243 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Henry Needs This Now</title>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Henry — Urgent Treatment</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f6f8;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --green:#22c55e;
+  --green-soft:#dcfce7;
+  --red:#dc2626;
+  --border:#e5e7eb;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter,system-ui;
+  background:var(--bg);
+  color:var(--text);
+  padding-bottom:96px;
+}
+.wrap{
+  max-width:520px;
+  margin:auto;
+  padding:1rem;
+}
+.card{
+  background:var(--card);
+  border-radius:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+.hero img, .hero video{
+  width:100%;
+  display:block;
+}
+.section{padding:1.1rem}
+.tag{
+  font-size:.75rem;
+  font-weight:700;
+  color:var(--red);
+  letter-spacing:.04em;
+  margin-bottom:.4rem;
+}
+h1{
+  font-size:1.25rem;
+  margin:.2rem 0 .5rem;
+}
+.desc{
+  font-size:.9rem;
+  color:var(--muted);
+  line-height:1.45;
+}
+.progress-wrap{margin-top:1rem}
+.progress-bar{
+  height:10px;
+  background:var(--green-soft);
+  border-radius:999px;
+  overflow:hidden;
+}
+.progress-fill{
+  height:100%;
+  background:linear-gradient(90deg,#16a34a,#22c55e);
+  width:0%;
+}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:.6rem;
+  margin-top:.8rem;
+}
+.stat{
+  background:#f8fafc;
+  border-radius:12px;
+  padding:.6rem;
+  text-align:center;
+  font-size:.75rem;
+  color:var(--muted);
+}
+.stat strong{
+  display:block;
+  color:var(--text);
+  font-size:.9rem;
+}
+.amounts{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:.6rem;
+  margin-top:1rem;
+}
+.amount{
+  padding:.8rem;
+  border:1px solid var(--border);
+  border-radius:12px;
+  font-weight:600;
+  text-align:center;
+  background:#fff;
+}
+.amount.primary{
+  border-color:var(--green);
+  background:#f0fdf4;
+}
+.progress-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:.85rem;
+  margin-bottom:.4rem;
+}
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+.progress-header strong{
+  font-weight:700;
+}
 
-  <style>
-    :root{
-      --bg:#0b0f1a;
-      --card:#111827;
-      --text:#f9fafb;
-      --muted:#9ca3af;
-      --red:#dc2626;
-      --red-dark:#b91c1c;
-      --green:#22c55e;
-      --line:#1f2937;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter,system-ui;
-      background:linear-gradient(180deg,#020617,#0b0f1a 30%);
-      color:var(--text);
-      padding-bottom:96px;
-    }
-    a{text-decoration:none;color:inherit}
-
-    .wrap{max-width:1100px;margin:auto;padding:0 1rem}
-    section{padding:2.5rem 0}
-
-    header{padding:2.5rem 0 2rem}
-    h1{
-      font-size:clamp(2.1rem,6vw,3.2rem);
-      font-weight:900;
-      line-height:1.1;
-      margin-bottom:1rem;
-    }
-    .hero p{
-      color:#e5e7eb;
-      font-size:1.05rem;
-      max-width:520px;
-      margin-bottom:1.4rem;
-    }
-
-    .video{
-      border-radius:1.2rem;
-      overflow:hidden;
-      background:#000;
-      box-shadow:0 30px 80px rgba(0,0,0,.65);
-    }
-    video{width:100%;display:block}
-
-    .donation-core{
-      background:linear-gradient(180deg,#111827,#0f172a);
-      border:1px solid var(--line);
-      border-radius:1.3rem;
-      padding:1.6rem;
-      margin-top:1.8rem;
-      box-shadow:0 20px 60px rgba(0,0,0,.45);
-    }
-
-    .progress-head{
-      display:flex;
-      justify-content:space-between;
-      font-weight:800;
-      margin-bottom:.5rem;
-    }
-    .progress{
-      height:20px;
-      background:#1f2937;
-      border-radius:999px;
-      overflow:hidden;
-      margin-bottom:1.1rem;
-    }
-    .progress-fill{
-      height:100%;
-      width:0%;
-      background:linear-gradient(90deg,#4ade80,#22c55e);
-      transition:width .6s ease;
-    }
-
-    .countdown{
-      display:flex;
-      gap:.5rem;
-      flex-wrap:wrap;
-      margin-bottom:1.2rem;
-    }
-    .time{
-      background:rgba(220,38,38,.15);
-      color:#fecaca;
-      padding:.65rem .8rem;
-      border-radius:.6rem;
-      min-width:78px;
-      text-align:center;
-      font-weight:800;
-      border:1px solid rgba(220,38,38,.25);
-    }
-    .time span{display:block;font-size:.7rem;color:#fca5a5}
-
-    .donate-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:.7rem;
-    }
-    .btn{
-      padding:1rem;
-      border-radius:.9rem;
-      font-weight:900;
-      text-align:center;
-    }
-    .primary{background:var(--red)}
-    .primary:hover{background:var(--red-dark)}
-    .alt{border:2px dashed #374151;color:#e5e7eb}
-
-    .card{
-      background:var(--card);
-      border:1px solid var(--line);
-      border-radius:1.3rem;
-      padding:1.8rem;
-      box-shadow:0 20px 50px rgba(0,0,0,.35);
-    }
-    h2{font-size:1.4rem;margin-bottom:1rem;font-weight:900}
-    .card p{color:#e5e7eb;line-height:1.65;font-size:1.02rem}
-
-    .feed div{
-      display:flex;
-      justify-content:space-between;
-      font-size:.9rem;
-      padding:.7rem 0;
-      border-bottom:1px solid #1f2937;
-      color:#d1d5db;
-    }
-
-    /* PARENTS BLOCK */
-    .parents-grid{
-      display:grid;
-      gap:1.6rem;
-    }
-    .parents-image img{
-      width:100%;
-      max-width:260px;
-      border-radius:1rem;
-      display:block;
-    }
-    .parents-signature{
-      margin-top:1rem;
-      font-weight:700;
-      color:#9ca3af;
-      font-size:.95rem;
-    }
-
-    footer{
-      border-top:1px solid #1f2937;
-      color:#9ca3af;
-      font-size:.85rem;
-      padding:2rem 0;
-    }
-
-    .cta-fixed{
-      position:fixed;
-      bottom:0;left:0;right:0;
-      padding:.8rem;
-      background:rgba(2,6,23,.9);
-      backdrop-filter:blur(10px);
-      z-index:999;
-    }
-    .cta-fixed a{
-      display:block;
-      background:linear-gradient(90deg,#dc2626,#ef4444);
-      color:#fff;
-      text-align:center;
-      padding:1rem;
-      font-weight:900;
-      border-radius:1rem;
-      box-shadow:0 10px 30px rgba(220,38,38,.5);
-    }
-
-    @media(min-width:768px){
-      .parents-grid{
-        grid-template-columns:260px 1fr;
-        align-items:center;
-      }
-    }
-    @media(min-width:1024px){
-      .hero-grid{
-        display:grid;
-        grid-template-columns:1.05fr .95fr;
-        gap:3rem;
-      }
-      .donate-grid{grid-template-columns:repeat(3,1fr)}
-    }
-  </style>
+.goal{
+  color:var(--muted);
+  font-weight:500;
+}
+.feed{
+  margin-top:1rem;
+  font-size:.8rem;
+}
+.feed div{
+  display:flex;
+  justify-content:space-between;
+  padding:.4rem 0;
+  border-bottom:1px solid var(--border);
+}
+.family{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  margin-top:14px;
+}
+.family img{
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  object-fit:cover;
+}
+.fixed-cta{
+  position:fixed;
+  bottom:0;left:0;right:0;
+  background:var(--red);
+  padding:.9rem;
+}
+.fixed-cta a{
+  display:block;
+  text-align:center;
+  color:#fff;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+</style>
 </head>
-
-<body>
-
-<header>
-  <div class="wrap hero-grid">
-    <div class="hero">
-      <h1>Henry Will Lose Another Ability.</h1>
-      <p>The treatment exists. The clock does not stop. This is not charity — it is intervention.</p>
-
-      <div class="video">
-        <video controls playsinline preload="metadata">
-          <source src="https://childrensinstitution.vercel.app/lv_0_20251213182234.mp4" type="video/mp4">
-        </video>
-      </div>
-    </div>
-
-    <div class="donation-core">
-      <div class="progress-head">
-        <span id="raised">$576,289 raised</span>
-        <span>$2,000,000 goal</span>
-      </div>
-      <div class="progress"><div class="progress-fill" id="bar"></div></div>
-      <div class="countdown" id="countdown"></div>
-
-      <div class="donate-grid">
-        <a class="btn primary" href="https://donate.stripe.com/9B69AS7XHbXG7ct8Kkc3m07">$10</a>
-        <a class="btn primary" href="https://donate.stripe.com/5kQ4gyem58Lu0O54u4c3m08">$25</a>
-        <a class="btn primary" href="https://donate.stripe.com/5kQfZg5PzgdW54lf8Ic3m09">$50</a>
-        <a class="btn primary" href="https://donate.stripe.com/bJe4gygud6DmdAR6Ccc3m0a">$100</a>
-        <a class="btn primary" href="https://donate.stripe.com/5kQeVcgudgdWaoFgcMc3m0b">$250</a>
-        <a class="btn alt" href="https://donate.stripe.com/3cIeVcem53ra54l4u4c3m0c">Other</a>
-      </div>
-    </div>
-  </div>
-</header>
-
-<section>
-  <div class="wrap card">
-    <h2>Why this cannot wait</h2>
-    <p>Spinal Muscular Atrophy does not pause. Every week without treatment permanently shuts down another function.</p>
-    <p><strong>Henry has already lost movements he will never regain.</strong> Breathing. Swallowing. Holding his own body.</p>
-    <p style="color:#fca5a5;font-weight:700">This medication stops the damage — but only if administered before six months of age.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wrap card">
-    <h2>Donations happening now</h2>
-    <div class="feed" id="feed"></div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap card">
-    <div class="parents-grid">
-      <div class="parents-image">
-        <img src="https://i.postimg.cc/NFfQsyNs/Image-fx-(16)-png-(2).jpg" alt="Henry’s parents">
-      </div>
-      <div>
-        <h2>Henry’s Parents</h2>
-        <p>We are Henry’s parents.</p>
-        <p>
-          Just a few months after his birth, we received the diagnosis that changed our lives:
-          <strong>Spinal Muscular Atrophy</strong>.
-        </p>
-        <p>
-          This fundraiser was created by us and is managed directly by our family.
-          <strong>Every donation goes exclusively toward Henry’s treatment.</strong>
-        </p>
-        <p class="parents-signature">Henry’s parents — campaign organizers</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">Stripe-secured payments · Campaign organized by Henry’s family · Medical documents available</div>
-</footer>
-
-<div class="cta-fixed">
-  <a href="https://donate.stripe.com/3cIeVcem53ra54l4u4c3m0c">Donate now — time is irreversible</a>
+<body><div class="wrap">
+  <div class="card"><div class="hero">
+  <video playsinline controls>
+    <source src="https://childrensinstitution.vercel.app/lv_0_20251213182234.mp4" type="video/mp4">
+  </video>
 </div>
 
-<script>
-  const deadline=new Date('2026-02-01T23:59:59Z');
-  const cd=document.getElementById('countdown');
-  setInterval(()=>{
-    const d=deadline-new Date();
-    cd.innerHTML=`
-      <div class=time>${Math.floor(d/864e5)}<span>days</span></div>
-      <div class=time>${Math.floor(d/36e5)%24}<span>hours</span></div>
-      <div class=time>${Math.floor(d/6e4)%60}<span>minutes</span></div>`;
-  },1000);
+<div class="section">
+  <div class="tag">EMERGENCY · MEDICAL TREATMENT</div>
+  <h1>Henry needs life-saving treatment now</h1>
+  <p class="desc">
+    Spinal Muscular Atrophy is shutting down Henry’s body week by week.
+    A single-dose medication can stop the damage — but only if administered before six months of age.
+  </p>
 
-  let raised=576289;
-  const el=document.getElementById('raised');
-  const bar=document.getElementById('bar');
-  function update(){
-    raised+=Math.floor(Math.random()*380)+140;
-    el.textContent='$'+raised.toLocaleString()+' raised';
-    bar.style.width=Math.min(raised/2000000*100,100)+'%';
-  }
-  setInterval(update,3600);
-  update();
+ <div class="progress-wrap">
+  <div class="progress-header">
+    <strong id="raised">$576,289</strong>
+    <span class="goal">$2,000,000 goal</span>
+  </div>
 
-  const names=['Anna','Lucas','Mia','Noah','Emma','James','Sophia','Daniel'];
-  const vals=['$18','$27','$42','$50','$73','$100','$250'];
-  const feed=document.getElementById('feed');
-  function add(){
-    const d=document.createElement('div');
-    d.innerHTML=`<span>${names[Math.random()*names.length|0]} · just now</span><span>${vals[Math.random()*vals.length|0]}</span>`;
-    feed.prepend(d);
-    if(feed.children.length>7)feed.lastChild.remove();
-  }
-  for(let i=0;i<5;i++)add();
-  setInterval(add,2800);
-</script>
+  <div class="progress-bar">
+    <div class="progress-fill" id="bar"></div>
+  </div>
+</div>
 
-</body>
+  <div class="stats">
+    <div class="stat"><strong>28%</strong>Reached</div>
+    <div class="stat"><strong id="months">6</strong>Months left</div>
+    <div class="stat"><strong>$1.42M</strong>Needed</div>
+  </div>
+
+  <div class="amounts">
+    <a class="amount primary" href="https://donate.stripe.com/9B69AS7XHbXG7ct8Kkc3m07">$10</a>
+    <a class="amount" href="https://donate.stripe.com/5kQ4gyem58Lu0O54u4c3m08">$25</a>
+    <a class="amount" href="https://donate.stripe.com/5kQfZg5PzgdW54lf8Ic3m09">$50</a>
+    <a class="amount" href="https://donate.stripe.com/bJe4gygud6DmdAR6Ccc3m0a">$100</a>
+    <a class="amount" href="https://donate.stripe.com/5kQeVcgudgdWaoFgcMc3m0b">$250</a>
+    <a class="amount" href="https://donate.stripe.com/3cIeVcem53ra54l4u4c3m0c">Other</a>
+  </div>
+
+  <div class="feed" id="feed"></div>
+
+  <div class="family">
+    <img src="https://i.postimg.cc/NFfQsyNs/Image-fx-(16)-png-(2).jpg" />
+    <p class="desc">Campaign administered by Henry’s parents. Funds are used exclusively for treatment.</p>
+  </div>
+</div>
+
+  </div>
+</div><div class="fixed-cta">
+  <a href="https://donate.stripe.com/3cIeVcem53ra54l4u4c3m0c">Donate now</a>
+</div><script>
+let raised=576289;
+const bar=document.getElementById('bar');
+function update(){
+  raised+=Math.floor(Math.random()*120)+40;
+  document.getElementById('raised').textContent='$'+raised.toLocaleString();
+  bar.style.width=Math.min(raised/2000000*100,100)+'%';
+}
+update();
+setInterval(update,4000);
+
+const names=['Anna','Lucas','Mia','Noah','Emma','James','Sophia'];
+const vals=['$10','$25','$50','$100'];
+const feed=document.getElementById('feed');
+function add(){
+  const d=document.createElement('div');
+  d.innerHTML=`<span>${names[Math.random()*names.length|0]}</span><span>${vals[Math.random()*vals.length|0]}</span>`;
+  feed.prepend(d);
+  if(feed.children.length>4)feed.lastChild.remove();
+}
+for(let i=0;i<3;i++)add();
+setInterval(add,3500);
+
+const deadline=new Month();deadline.setMonth(deadline.getMonth()+6);
+function monthsLeft(){
+  const diff=Math.max(0,deadline-new Month());
+  document.getElementById('months').textContent=Math.ceil(diff/86400000);
+}
+monthsLeft();
+</script></body>
 </html>

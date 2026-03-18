@@ -182,20 +182,20 @@ h1{
 <style>
 .popup-donation {
     position: fixed;
-    top: 17px;
-    left: 25%;
+    top: 16px;
+    left: 24%;
     transform: translate(-50%, -10px);
-    background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(6px);
-    color: #fff;
-    padding: 8px 14px;
-    border-radius: 999px;
+    background: #ffffff;
+    color: #222;
+    padding: 10px 14px;
+    border-radius: 10px;
     font-size: 13px;
     font-weight: 500;
     opacity: 0;
-    transition: all 0.35s ease;
+    transition: all 0.3s ease;
     z-index: 9999;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
     white-space: nowrap;
 }
 
@@ -214,10 +214,9 @@ const amounts = [10,17,25,32,50,68,100,250];
 function getMessage(name, amount) {
     const messages = [
         `${name} donated $${amount}`,
-        `${name} contributed $${amount}`,
-        `${name} just helped with $${amount}`,
+        `${name} just contributed $${amount}`,
         `${name} supported with $${amount}`,
-        `${name} joined with $${amount}`
+        `${name} made a donation of $${amount}`
     ];
     return messages[Math.floor(Math.random() * messages.length)];
 }
@@ -237,7 +236,7 @@ function showDonationPopup() {
 }
 
 function startLoop() {
-    const delay = Math.random() * 4000 + 5000; // 5s a 9s (mais natural)
+    const delay = Math.random() * 4000 + 5000;
     setTimeout(() => {
         showDonationPopup();
         startLoop();

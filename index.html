@@ -178,6 +178,72 @@ h1{
 }
 </style>
 </head>
+<style>
+.popup-donation {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, -20px);
+    background: #000;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-size: 14px;
+    opacity: 0;
+    transition: all 0.4s ease;
+    z-index: 9999;
+    white-space: nowrap;
+}
+
+.popup-donation.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+</style>
+
+<div class="popup-donation" id="popupDonation"></div>
+
+<script>
+const names = ["Emily","James","Olivia","Liam","Sophia","Noah","Lucas","Mia","Ethan","Ava","Daniel","Isabella"];
+const amounts = [10,17,25,32,50,68,100,250];
+
+function getMessage(name, amount) {
+    const messages = [
+        `${name} just donated $${amount}`,
+        `${name} contributed $${amount}`,
+        `${name} supported with $${amount}`,
+        `${name} just helped with $${amount}`,
+        `${name} made a donation of $${amount}`,
+        `${name} joined the cause with $${amount}`
+    ];
+    return messages[Math.floor(Math.random() * messages.length)];
+}
+
+function showDonationPopup() {
+    const popup = document.getElementById("popupDonation");
+
+    const name = names[Math.floor(Math.random() * names.length)];
+    const amount = amounts[Math.floor(Math.random() * amounts.length)];
+
+    popup.innerText = getMessage(name, amount);
+    popup.classList.add("show");
+
+    setTimeout(() => {
+        popup.classList.remove("show");
+    }, 3000);
+}
+
+function startLoop() {
+    const delay = Math.random() * 4000 + 4000; // 4s a 8s
+    setTimeout(() => {
+        showDonationPopup();
+        startLoop();
+    }, delay);
+}
+
+startLoop();
+</script>
+
 <body><div class="wrap">
   <div class="card"><div class="hero">
   <video playsinline controls>
